@@ -54,8 +54,17 @@ addCategory(){
         imageUrl : this.catImageUrl,
       };
 
-    const baseURL =  "http://localhost:8080/";
-    axios.put(baseURL+"categories",JSON.stringify(newCategory))
+    axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+    const baseURL =  this.$store.state.apiBaseUrl+"categories";
+    const customConfig = {
+  headers: {
+  'Content-Type': 'application/json'
+  }
+};
+    console.log(baseURL);
+    console.log(JSON.stringify(newCategory))
+    axios.put(baseURL,JSON.stringify(newCategory),customConfig)
+    
     .then(() => {}) .catch(err => console.log(err));
       
 }

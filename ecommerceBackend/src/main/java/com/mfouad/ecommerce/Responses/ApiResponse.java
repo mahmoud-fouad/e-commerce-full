@@ -4,13 +4,17 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@Builder
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ApiResponse {
 
     private boolean success;

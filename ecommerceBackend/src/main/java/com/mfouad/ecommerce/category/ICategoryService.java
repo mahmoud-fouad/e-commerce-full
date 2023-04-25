@@ -5,5 +5,6 @@ public interface ICategoryService {
     
 public List <CategoryModel> getAll();
 public void create(CategoryModel category);
+public CategoryModel getCategoryDetails(long id);
 
 }

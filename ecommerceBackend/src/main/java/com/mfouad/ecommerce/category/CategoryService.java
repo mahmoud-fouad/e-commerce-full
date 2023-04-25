@@ -23,6 +23,12 @@ public class CategoryService implements ICategoryService{
         return categoryRepo.findAll();
     }
 
+    @Override
+    public CategoryModel getCategoryDetails(long id) {
+        return categoryRepo.findById(id).get();
+        
+    }
+
     
     
    

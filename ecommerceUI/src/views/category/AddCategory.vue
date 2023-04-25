@@ -1,5 +1,6 @@
 <script setup>
 import axios from 'axios'
+import router from '../../router';
 
 </script>
 
@@ -65,7 +66,7 @@ addCategory(){
     console.log(JSON.stringify(newCategory))
     axios.put(baseURL,JSON.stringify(newCategory),customConfig)
     
-    .then(() => {}) .catch(err => console.log(err));
+    .then(() => {router.push('/categories');}) .catch(err => console.log(err));
       
 }
 }

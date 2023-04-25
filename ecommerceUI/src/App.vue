@@ -5,11 +5,10 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
 
-<RouterLink to="/addCategory" >add category</RouterLink>
+<RouterLink to="/categories" >categories</RouterLink>
     
     </div>
   </header>

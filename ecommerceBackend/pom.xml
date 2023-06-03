@@ -23,6 +23,15 @@
     <version>3.0.0</version>
 </dependency>
 
+<dependency>
+    <groupId>redis.clients</groupId>
+    <artifactId>jedis</artifactId>
+    <version>4.4.1</version>
+</dependency>
+
+ 
+
+
 		<!--<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
@@ -71,7 +80,23 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<!--
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-engine</artifactId>
+    <version>5.9.2</version>
+    <scope>test</scope>
+</dependency>
+-->
 	</dependencies>
+
+	<repositories>
+  <repository>
+    <id>spring-milestone</id>
+    <name>Spring Maven MILESTONE Repository</name>
+    <url>https://repo.spring.io/libs-milestone</url>
+  </repository>
+</repositories>
 
 	<build>
 		<plugins>

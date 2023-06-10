@@ -19,5 +19,11 @@ public CategoryModel getCategoryDetails(long id) {
    return categoryRepo.findById(id)
     .orElseThrow(()->new EcommerceException("can not find category by this id"));
 }
+
+
+@Override
+public boolean isCategoryExist(long id) {
+    return categoryRepo.existsById(id);
+}
     
 }

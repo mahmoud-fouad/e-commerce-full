@@ -2,6 +2,9 @@ package com.mfouad.ecommerce.category;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.mfouad.ecommerce.Exceptions.EcommerceException;
@@ -11,6 +14,9 @@ public class CategoryService implements ICategoryService{
 
     
     CategoryRepo categoryRepo;
+    
+    @Autowired
+	ApplicationEventPublisher applicationEventPublisher;
 
     public CategoryService( CategoryRepo categoryRepo){
         this.categoryRepo=categoryRepo;
@@ -18,7 +24,13 @@ public class CategoryService implements ICategoryService{
 
     @Override
     public void create(CategoryModel category){
-        categoryRepo.save(category);
+        CategoryModel cateDb= categoryRepo.save(category);
+        raiseAddCategory(cateDb);
+    }
+
+    @Async
+    private void raiseAddCategory(CategoryModel cateDb){
+        applicationEventPublisher.publishEvent(new AddCategoryEvent(cateDb));
     }
 
     public List<CategoryModel> getAll(){
@@ -42,11 +54,18 @@ public class CategoryService implements ICategoryService{
     @Override
     public void delete(long id) {
         try {
-            categoryRepo.deleteById(id);    
+            categoryRepo.deleteById(id); 
+            raiseDeleteCategory(id);   
         } catch (Exception e) {
             throw new EcommerceException("can not find category with this id");
         }
+
         
+    }
+
+    @Async
+    private void raiseDeleteCategory(long id){
+        applicationEventPublisher.publishEvent(new DeleteCategoryEvent(id));
     }
 
     private CategoryModel getCategory(long id){

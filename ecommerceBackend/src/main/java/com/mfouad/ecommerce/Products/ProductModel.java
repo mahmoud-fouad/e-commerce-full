@@ -1,5 +1,6 @@
 package com.mfouad.ecommerce.Products;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,9 +36,8 @@ public class ProductModel {
     String manufacturer;
 
     @JsonIgnore
-    @ManyToOne()
-    @JoinColumn(name ="category_id")
-    CategoryModel category;
+    @Column(name ="category_id")
+    long categoryID;
 
 
     

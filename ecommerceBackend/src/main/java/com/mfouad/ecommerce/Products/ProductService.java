@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.mfouad.ecommerce.Exceptions.EcommerceException;
-import com.mfouad.ecommerce.category.ICategoryService;
 
 @Service
 public class ProductService implements IProductService{
@@ -26,7 +25,7 @@ public void add(ProductDTO dto) {
    .description(dto.getDescription())
    .manufacturer(dto.getManufacturer())
    .name(dto.getName())
-   .category(categoriesStore.getCategoryDetails(dto.getCatID()))
+   .categoryID(dto.getCatID())
    .build();
    repo.save(modle);
     
@@ -36,7 +35,7 @@ public void add(ProductDTO dto) {
 public void update(UpdateProductDTO dto) {
    ProductModel model= getProduct(dto.getId());
    
-   model.setCategory(categoriesStore.getCategoryDetails(dto.getDto().getCatID()));
+   model.setCategoryID(dto.getDto().getCatID());
    model.setDescription(dto.getDto().getDescription());
    model.setManufacturer(dto.getDto().getManufacturer());
    model.setName(dto.getDto().getName());

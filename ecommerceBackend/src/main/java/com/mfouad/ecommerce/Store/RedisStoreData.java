@@ -1,7 +1,6 @@
 package com.mfouad.ecommerce.Store;
 
 
-import java.util.List;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;

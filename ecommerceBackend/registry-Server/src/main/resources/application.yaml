@@ -1,0 +1,9 @@
+server:
+    port: ${registryport:8761}
+eureka:
+    instance:
+        nonSecurePortEnabled: true
+        securePortEnabled: false
+    client:
+      registerWithEureka: false
+      fetchRegistry: false

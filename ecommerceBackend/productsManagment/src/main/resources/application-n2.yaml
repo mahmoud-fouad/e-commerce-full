@@ -1,0 +1,49 @@
+
+server:
+    port: ${productsManagmentPort:8087}
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      #key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      #value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  application:
+    name: productsManagment
+  h2:
+    console:
+      enabled: true
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    properties:
+        hibernate:
+          dialect: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+      
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:ecommerce
+    username: sa
+    password:
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    nonSecurePortEnabled: true
+    securePortEnabled: false
+    non-secure-port: ${server.port}
+    instanceId: ${spring.application.name}:${random.value}
+
+topic:
+  name: productsCategoriesTopic
+  id: 24343dg
+  partitions: 2

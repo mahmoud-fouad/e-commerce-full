@@ -1,0 +1,25 @@
+type Query{
+    lowPrice: [ProductModel]
+    manufacturerProducts(manf: String ): [ProductModel]
+}
+
+type ProductModel {
+    id: ID
+    name: String
+    description: String
+    url: String
+    manufacturer: String
+    prodUniName: String
+    
+    categoryName: String
+    categoryDesc: String
+    categoryImage: String
+}
+
+type Book {
+    name : String
+}
+
+input ManfProductsInput{
+    name: String
+}

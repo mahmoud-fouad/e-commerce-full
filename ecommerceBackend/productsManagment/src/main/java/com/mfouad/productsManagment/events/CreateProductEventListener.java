@@ -59,6 +59,7 @@ private KafkaTemplate<String, ProductCategoryDTO> template;
         .manufacturer(product.getManufacturer())
         .name(product.getName())
         .prodUniName(product.getProdUniName())
+        .price(product.getPrice())
         .id(product.getId())
         .build();
 

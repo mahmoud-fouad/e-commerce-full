@@ -1,12 +1,18 @@
 package com.mfouad.productsList;
 
+import java.util.Collection;
 import java.util.List;
 
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
+import com.mfouad.dto.ManfProductsInput;
 import com.mfouad.ecommerce.Exceptions.EcommerceException;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class ProductService implements IProductService{
     
 ProductRepo repo;
@@ -26,6 +32,24 @@ public void add(ProductModel modle) {
 public void update(ProductDTO dto) {
   
 }
+
+
+@Override
+public List<ProductModel> getLowPriceProducts(){
+
+List<ProductModel> data=    repo.getProductsByPrice(25);
+
+log.info("retrive products with prices lower that {} and size is {}", 20,data.size());
+
+return data;
+}
+
+@Override
+public List<ProductModel> getProductsByManf (String input){
+    
+   return repo.getProductsByManufacturer(input);
+}
+
 
 @Override
 public List<ProductModel> getAllProducts() {

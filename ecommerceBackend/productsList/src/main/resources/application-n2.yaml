@@ -2,6 +2,10 @@
 server:
     port: ${productsListPort:8085}
 spring:
+  graphql:
+    graphiql:
+      enabled: true
+
   kafka:
     consumer:
       auto-offset-reset: earliest

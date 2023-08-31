@@ -35,6 +35,7 @@ public class ProductModel {
     String url;
     String manufacturer;
     String prodUniName;
+    double price;
 
     @JsonIgnore
     @Column(name ="category_id")

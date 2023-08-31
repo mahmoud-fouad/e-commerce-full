@@ -42,6 +42,7 @@ public class AppProductListener {
 		.name(addProductDTO.getName())
 		.prodUniName(addProductDTO.getProdUniName())
 		.url(addProductDTO.getUrl())
+		.price(addProductDTO.getPrice())
 		.build();
 		productService.add(model);
 	}

@@ -25,4 +25,5 @@ public class ProductCategoryDTO implements Serializable{
     String catDesc;
     String catImage;
     String prodUniName;
+    double price;
 }

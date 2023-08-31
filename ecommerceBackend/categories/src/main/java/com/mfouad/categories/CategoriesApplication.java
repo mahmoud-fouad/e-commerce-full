@@ -1,6 +1,6 @@
 package com.mfouad.categories;
 
-import javax.swing.text.html.parser.Entity;
+
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

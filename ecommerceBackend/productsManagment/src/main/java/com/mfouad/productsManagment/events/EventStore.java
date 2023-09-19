@@ -1,14 +1,14 @@
 package com.mfouad.productsManagment.events;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
 
 public class EventStore {
     
-     private Map<String, List<AProductEvent>> store = new HashMap<>();
+     private Map<String, List<AProductEvent>> store = new Hashtable<>();
 
 
      public void addEvent(String productUniName,AProductEvent event ){

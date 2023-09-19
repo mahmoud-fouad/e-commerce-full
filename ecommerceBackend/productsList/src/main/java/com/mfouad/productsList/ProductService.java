@@ -1,12 +1,7 @@
 package com.mfouad.productsList;
 
-import java.util.Collection;
 import java.util.List;
-
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
-
-import com.mfouad.dto.ManfProductsInput;
 import com.mfouad.ecommerce.Exceptions.EcommerceException;
 
 import lombok.extern.slf4j.Slf4j;

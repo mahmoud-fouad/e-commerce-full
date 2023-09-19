@@ -1,9 +1,16 @@
 
 server:
     port: ${categoriesPort:8082}
+
+logging:
+  file:
+    path: D:/java/workspaces/spring4_learn/e-commerce-full/log
+
 spring:
   application:
     name: categories-services
+  zipkin:
+    base-url: http://localhost:9411/
   h2:
     console:
       enabled: true

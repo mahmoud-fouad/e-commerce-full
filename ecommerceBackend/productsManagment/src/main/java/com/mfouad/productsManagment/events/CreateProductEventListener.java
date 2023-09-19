@@ -1,5 +1,7 @@
 package com.mfouad.productsManagment.events;
 
+import org.apache.kafka.clients.producer.Callback;
+import org.apache.kafka.clients.producer.RecordMetadata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,8 +11,12 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.kafka.support.SendResult;
+import org.springframework.lang.Nullable;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.concurrent.ListenableFuture;
+import org.springframework.util.concurrent.ListenableFutureCallback;
 import org.springframework.web.client.RestTemplate;
 
 import com.mfouad.configurations.KafkaConfiguration;
@@ -69,7 +75,25 @@ private KafkaTemplate<String, ProductCategoryDTO> template;
 		.setHeader(KafkaHeaders.TOPIC, kafkaConf.getName())
         .setHeader(KafkaHeaders.GROUP_ID, "productsGroup")
 		.build();
-		template.send(sendMessage);
+
+        
+
+		ListenableFuture<SendResult<String, ProductCategoryDTO>> result = template.send(sendMessage);
+        result.addCallback(new ListenableFutureCallback<SendResult<String, ProductCategoryDTO>>() {
+
+@Override
+public void onFailure(Throwable ex) {
+  
+}
+   
+@Override
+public void onSuccess(@Nullable SendResult<String, ProductCategoryDTO> arg0) {
+     log.info("-- in CreateProductEventListener success send message to kafka consumers");
+    
+}
+
+            
+        });
 	}
     
 }

@@ -30,6 +30,7 @@ public class CategoryController {
 
     @GetMapping("")
     public ResponseEntity<List<CategoryModel>> getAll(){
+          log.info("get all categories ");
         return ResponseEntity.ok(categoryService.getAll());
     }
 
